@@ -13,7 +13,6 @@ function _get_thumbnails(){
 
 function _get_anchor(thumbnail){
 	var anchors = thumbnail.childNodes;
-	console.assert(anchors.length === 2);
 
 	var anchor;
 	var attributesNames;
@@ -45,23 +44,29 @@ function _unclick(){
 	return;
 }
 
-function _show(a){
-	console.log(a);
-	return;
+function _ret(a){
+	return a;
 }
+
+function _get_image(){
+	myPromise = new Promise(function (resolve, reject){
+		setTimeout(() => resolve(_get_source()), 3000);
+	});
+
+	myPromise.then(function(value){
+		console.log(value);
+		console.log(2);
+	});
+}
+
 function main(){
 	var buffer = "";
 	var img;
 	var url = "";
 	var thumbnails;
+	var myPromise;
 	
 	thumbnails = _get_thumbnails();
 
 	_click(_get_anchor(thumbnails[0]));
-	for (var k = 0; k < thumbnails.length; k++){
-		url = setTimeout(_get_source, 2000);
-		buffer = setTimeout(_update_buffer, 2200, buffer, url);
-		break;
-		//_click(_get_anchor(thumbnails[1]));		
-	}
 }
