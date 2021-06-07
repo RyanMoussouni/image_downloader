@@ -34,7 +34,7 @@ function get_urls(){
 
 	for ((i=0; i<n_request; i++)); do
 		lowRange=$((${num}*i+1))
-		urls+=("https://www.googleapis.com/customsearch/v1\?key=${1}\&cx=${2}\&q=${3}\&num=${4}\&lowRange=${lowRange}\&searchType=image\&fileType=jpg\&imgSize=${5}\&alt=json")
+		urls+=("https://www.googleapis.com/customsearch/v1?key=${1}&cx=${2}&q=${3}&num=${4}&lowRange=${lowRange}&searchType=image&fileType=jpg&imgSize=${5}&alt=json")
 	done
 }
 
