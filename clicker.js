@@ -57,7 +57,7 @@ function _get_image(){
 		console.log(value);
 		console.log(2);
 	});
-}
+};
 
 function main(){
 	var buffer = "";
