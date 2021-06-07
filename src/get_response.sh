@@ -34,7 +34,7 @@ function get_urls(){
 
 	for ((i=0; i<n_request; i++)); do
 		lowRange=$((${num}*i+1))
-		urls+="https://www.googleapis.com/customsearch/v1\?key=${1}\&cx=${2}\&q=${3}\&num=${4}\&lowRange=${lowRange}\&searchType=image\&fileType=jpg\&imgSize=${5}\&alt=json"
+		urls+=("https://www.googleapis.com/customsearch/v1\?key=${1}\&cx=${2}\&q=${3}\&num=${4}\&lowRange=${lowRange}\&searchType=image\&fileType=jpg\&imgSize=${5}\&alt=json")
 	done
 }
 
@@ -42,8 +42,7 @@ function get_response(){
 	local n_request=$((total/num + 1))
 	
 	for ((i=0; i<n_request; i++)); do
-		echo "passed ${i}"
-		curl --output "../data/links/api_responses/response_{$i}.json" --url ${urls[i]}
+		curl --output "../data/links/api_responses/response_${i}.json" --url ${urls[i]}
 	done 
 }
 
@@ -52,6 +51,3 @@ function get_response(){
 get_query $name $surname $tv_serie
 get_urls $api_key $cx $query $num $img_size
 get_response
-
-echo $query
-echo $urls
