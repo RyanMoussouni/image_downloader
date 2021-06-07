@@ -1,8 +1,7 @@
 #!/bin/bash
 
 ##### ARGUMENTS & VARIABLES #####
-echo $#
-if [[ $# -ne 5 ]] ; then
+if [[ $# -ne 4 ]] ; then
 	echo "Invalid number of argument, please provide: name; surname; tv_serie (with underscores instead of spaces); number of images wanted (multiple of 10, max 300)"
 	exit 1
 fi
