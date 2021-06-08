@@ -13,7 +13,7 @@ def get_link_gen(file):
 		yield item["link"]
 
 
-PATH = "../data/links/api_responses"
+PATH = "../data/links/api_responses/"
 
 with open("links.txt", "w") as f:
 	files = os.listdir(PATH)
