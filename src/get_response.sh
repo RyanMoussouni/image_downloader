@@ -47,7 +47,7 @@ function get_response(){
 }
 
 
-##### ROUTINES CALLS #####
+##### BODY #####
 get_query $name $surname $tv_serie
 get_urls $api_key $cx $query $num $img_size
 get_response
