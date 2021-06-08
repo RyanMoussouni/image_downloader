@@ -17,8 +17,8 @@ function pad_idx(){
 ##### BODY #####
 cat links.txt | while read line; do   
 	arr=(${line})
-	folder="${line[0]}"
-	url="${line[1]}"
+	folder="${arr[0]}"
+	url="${arr[1]}"
 
 	if [ -d "../data/images/raw/${folder}" ]; then
 		curl --output "../data/images/raw/${folder}/image_${idx}.jpg" --url ${url} 
