@@ -12,7 +12,7 @@ tv_serie=$3
 total=$4
 
 num=10
-img_size="xxlarge"
+img_size="xlarge"
 
 api_key="AIzaSyDOpepJVudUKvGLeQjXi3yQ4cij-pLbrvw"
 cx="96d805bff545968c0"

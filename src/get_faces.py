@@ -16,7 +16,7 @@ def _crop_faces(pil_img, boxes):
   H = np_img.shape[0]
 
   for k in range(len(boxes)):
-    boxes[k] = change_coordinates(boxes[k])
+    boxes[k] = _change_coordinates(boxes[k])
   
   faces = []
   for box in boxes:
@@ -36,6 +36,7 @@ def pad(k):
 RAW_PATH="../data/images/raw"
 PRO_PATH="../data/images/processed"
 actors_dir_names = os.listdir(RAW_PATH)
+os.mkdir(PRO_PATH)
 
 detector= MTCNN()
 
