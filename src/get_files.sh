@@ -1,7 +1,7 @@
 #!/bin/bash
 ###### VARIABLES ######
 folder=""
-idx=0
+idx=00000
 
 
 ##### ROUTINES DEFINITION #####
@@ -16,13 +16,14 @@ function pad_idx(){
 
 ##### BODY #####
 cat links.txt | while read line; do   
+	arr=(${line})
 	folder="${line[0]}"
 	url="${line[1]}"
 
 	if [ -d "../data/images/raw/${folder}" ]; then
 		curl --output "../data/images/raw/${folder}/image_${idx}.jpg" --url ${url} 
 	else
-		mkdir "../data/images/raw/${folder}"
+		mkdir "../data/images" && mkdir "../data/images/raw" && mkdir "../data/images/raw/${folder}"
 		curl --output "../data/images/raw/${folder}/image_${idx}.jpg" --url ${url}
 	fi
 
