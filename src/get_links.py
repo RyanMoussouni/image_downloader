@@ -13,8 +13,7 @@ def get_link_gen(file):
 		yield item["link"]
 
 
-name = "emilia_clarke\\"
-PATH = "C:\\Users\\G604056\\Documents\\reconnaissance_serie\\celeb_images\\" + name
+PATH = "../data/links/api_responses"
 
 with open("links.txt", "w") as f:
 	files = os.listdir(PATH)
