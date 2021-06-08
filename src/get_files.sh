@@ -29,6 +29,4 @@ cat links.txt | while read line; do
 
 	update_idx
 	pad_idx
-
-	echo ${idx}
 done
