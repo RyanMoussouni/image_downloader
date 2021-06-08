@@ -42,7 +42,7 @@ function get_response(){
 	local n_request=$((total/num + 1))
 	
 	for ((i=0; i<n_request; i++)); do
-		curl --output "../data/links/api_responses/response_${i}.json" --url ${urls[i]}
+		curl --output "../data/links/api_responses/response_${query}_${i}.json" --url ${urls[i]}
 	done 
 }
 
