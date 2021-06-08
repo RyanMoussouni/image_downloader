@@ -18,6 +18,7 @@ PATH = "../data/links/api_responses/"
 with open("links.txt", "w") as f:
 	files = os.listdir(PATH)
 	for file in files:
+		name, surname = file.split("_")[1].split("+")[0], file.split("_")[1].split("+")[1]
 		for link in get_link_gen(file):
-			f.write(link + "\n")
+			f.write("{0}_{1} {2}\n".format(name, surname, link))
 	f.close()
