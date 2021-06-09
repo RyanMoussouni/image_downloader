@@ -60,4 +60,5 @@ for dir_name in actors_dir_names:
             os.remove("{0}/{1}/{2}".format(RAW_PATH, dir_name, filename))
 
         except IOError:
+            os.remove("{0}/{1}/{2}".format(RAW_PATH, dir_name, filename))
             pass
