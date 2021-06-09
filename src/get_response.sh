@@ -61,5 +61,5 @@ else
 fi
 
 get_urls $api_key $cx $query $num $img_size
-echo ${url[0]}
+echo ${urls[0]}
 #get_response
