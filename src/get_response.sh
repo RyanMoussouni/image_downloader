@@ -1,15 +1,18 @@
 #!/bin/bash
 
 ##### ARGUMENTS & VARIABLES #####
-if [[ $# -ne 4 ]] ; then
-	echo "Invalid number of argument, please provide: name; surname; tv_serie (with underscores instead of spaces); number of images wanted (multiple of 10, max 300)"
+if [[ $# -ne 4 || $# -ne 3 ]] ; then
+	echo "Invalid number of argument (should be 3 or 4), please provide: name; surname; number of images wanted (multiple of 10, max 300); and optionnally the tv_serie (with underscores instead of spaces)"
 	exit 1
 fi
 
 name=$1
 surname=$2
-tv_serie=$3
-total=$4
+total=$3
+
+if [[ $# -eq 4 ]]; then
+	tv_serie=$4
+fi
 
 num=10
 img_size="xlarge"
@@ -22,11 +25,16 @@ urls=()
 
 ##### ROUTINES DEFINITION #####
 function get_query(){
-	local name=$1
-	local surname=$2
-	local tv_serie=${3//_/+}
-
-	query="${name}+${surname}+${tv_serie}"
+	if [[ $# -eq 4 ]]; then
+		local name=$1
+		local surname=$2
+		local tv_serie=${3//_/+}
+		query="${name}+${surname}+${tv_serie}"
+	else
+		local name=$1
+		local surname=$2
+		query="${name}+${surname}"
+	fi
 }
 
 function get_urls(){
@@ -48,6 +56,12 @@ function get_response(){
 
 
 ##### BODY #####
-get_query $name $surname $tv_serie
+
+if [[ $# -eq 4 ]]; then
+	get_query $name $surname $tv_serie
+else
+	get_query $name $surname
+fi
+
 get_urls $api_key $cx $query $num $img_size
 get_response
