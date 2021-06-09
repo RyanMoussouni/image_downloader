@@ -15,17 +15,28 @@ function pad_idx(){
 }
 
 ##### BODY #####
+if [[ ! -d "../data/images" ]]; then
+	mkdir "../data/images"
+fi
+
+if [[ ! -d "../data/images/raw" ]]; then
+	mkdir "../data/images/raw"
+fi
+
+if [[ ! -d "../data/images/processed" ]]; then
+	mkdir "../data/images/processed"
+fi
+
+
 cat links.txt | while read line; do   
 	arr=(${line})
 	folder="${arr[0]}"
 	url="${arr[1]}"
 
-	if [ -d "../data/images/raw/${folder}" ]; then
-		curl --output "../data/images/raw/${folder}/image_${idx}.jpg" --url ${url} 
-	else
-		mkdir "../data/images" && mkdir "../data/images/raw" && mkdir "../data/images/raw/${folder}"
-		curl --output "../data/images/raw/${folder}/image_${idx}.jpg" --url ${url}
+	if [ ! -d "../data/images/raw/${folder}" ]; then
+		mkdir "../data/images/raw/${folder}"
 	fi
+	curl --output "../data/images/raw/${folder}/image_${idx}.jpg" --url ${url}
 
 	update_idx
 	pad_idx

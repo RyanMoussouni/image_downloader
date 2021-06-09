@@ -36,7 +36,6 @@ def pad(k):
 RAW_PATH="../data/images/raw"
 PRO_PATH="../data/images/processed"
 actors_dir_names = os.listdir(RAW_PATH)
-os.mkdir(PRO_PATH)
 
 detector= MTCNN()
 
