@@ -22,3 +22,7 @@ with open("links.txt", "w") as f:
 		for link in get_link_gen(file):
 			f.write("{0}_{1} {2}\n".format(name, surname, link))
 	f.close()
+	
+	for file in files:
+		os.remove(PATH + file)
+	
