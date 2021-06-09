@@ -26,6 +26,7 @@ urls=()
 ##### ROUTINES DEFINITION #####
 function get_query(){
 	if [[ $# -eq 4 ]]; then
+		echo Hello World
 		local name=$1
 		local surname=$2
 		local tv_serie=${3//_/+}
@@ -58,8 +59,10 @@ function get_response(){
 ##### BODY #####
 
 if [[ $# -eq 4 ]]; then
+	echo $#
 	get_query $name $surname $tv_serie
 else
+	echo $#
 	get_query $name $surname
 fi
 
