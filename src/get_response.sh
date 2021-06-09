@@ -26,7 +26,6 @@ urls=()
 ##### ROUTINES DEFINITION #####
 function get_query(){
 	if [[ $# -eq 3 ]]; then
-		echo Hello World
 		local tv_serie=${3//_/+}
 		query="${name}+${surname}+${tv_serie}"
 	else
@@ -61,5 +60,4 @@ else
 fi
 
 get_urls $api_key $cx $query $num $img_size
-echo ${urls[0]}
-#get_response
+get_response
