@@ -1,20 +1,6 @@
 #!/bin/bash
-###### VARIABLES ######
-folder=""
-idx=00000
 
-
-##### ROUTINES DEFINITION #####
-function update_idx(){
-	idx=$((10#${idx} + 1))
-}
-
-function pad_idx(){
-	local temp="00000${idx}"
-	idx=${temp:(-5):5}
-}
-
-##### BODY #####
+##### CALLS TO THE FILE SYSTEM #####
 if [[ ! -d "../data/images" ]]; then
 	mkdir "../data/images"
 fi
@@ -27,17 +13,28 @@ if [[ ! -d "../data/images/processed" ]]; then
 	mkdir "../data/images/processed"
 fi
 
+###### VARIABLES ######
+actor_folder=""
+
+
+##### ROUTINES DEFINITION #####
+function pad_idx(){
+	local temp="00000${idx}"
+	idx=${temp:(-5):5}
+}
+
+##### BODY #####
 
 cat links.txt | while read line; do   
 	arr=(${line})
-	folder="${arr[0]}"
+	actor_folder="${arr[0]}"
 	url="${arr[1]}"
 
-	if [ ! -d "../data/images/raw/${folder}" ]; then
-		mkdir "../data/images/raw/${folder}"
+	if [ ! -d "../data/images/raw/${actor_folder}" ]; then
+		mkdir "../data/images/raw/${actor_folder}"
 	fi
-	curl --output "../data/images/raw/${folder}/image_${idx}.jpg" --url ${url}
-
-	update_idx
+	
+	idx=`ls -1 ../data/images/raw/${actor_folder} | wc -l`
 	pad_idx
+	curl --output "../data/images/raw/${actor_folder}/image_${idx}.jpg" --url ${url}
 done
