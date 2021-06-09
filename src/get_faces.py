@@ -39,10 +39,10 @@ actors_dir_names = os.listdir(RAW_PATH)
 
 detector= MTCNN()
 
-count = 0
-
 for dir_name in actors_dir_names:
-    os.mkdir("{0}/{1}".format(PRO_PATH, dir_name))
+    if dir_name not in os.listdir(PRO_PATH):
+        os.mkdir("{0}/{1}".format(PRO_PATH, dir_name))
+
     filenames = os.listdir("{0}/{1}".format(RAW_PATH, dir_name))
 
     for filename in filenames:
@@ -51,11 +51,13 @@ for dir_name in actors_dir_names:
             faces = process_image(raw_img, detector)
             for face in faces:
                 try:
-                    Image.fromarray(face).save("{0}/{1}/face_{2}.jpg".format(PRO_PATH, dir_name, pad(count)))
-                    count+=1
+                    face_count= len(os.listdir("{0}/{1}".format(PRO_PATH, dir_name)))
+                    Image.fromarray(face).save("{0}/{1}/{2}_face_{3}.jpg".format(PRO_PATH, dir_name, dir_name, pad(face_count)))
                 except ValueError:
                     print("error croping image")
                     print("filename", filename)
                     print("face shape", face.shape)
+            os.remove("{0}/{1}/{2}".format(RAW_PATH, dir_name, filename))
+
         except IOError:
             pass
