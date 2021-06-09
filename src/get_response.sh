@@ -23,6 +23,21 @@ cx="96d805bff545968c0"
 query=""
 urls=()
 
+##### CALLS TO THE FILE SYSTEM #####
+
+if [[ ! -d "../data" ]]; then
+	mkdir "../data"
+fi
+if [[ ! -d "../data/links" ]]; then
+	mkdir "../data/links"
+fi
+if [[ ! -d "../data/links/api_responses" ]]; then
+	mkdir "../data/links/api_responses"
+fi
+if [[ ! -d "../data/links/download" ]]; then
+	mkdir "../data/links/download"
+fi
+
 ##### ROUTINES DEFINITION #####
 function get_query(){
 	if [[ $# -eq 3 ]]; then
