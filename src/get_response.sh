@@ -25,14 +25,11 @@ urls=()
 
 ##### ROUTINES DEFINITION #####
 function get_query(){
-	echo "Nb arg in get_query $#"
-	if [[ $# -eq 4 ]]; then
+	if [[ $# -eq 3 ]]; then
 		echo Hello World
 		local tv_serie=${3//_/+}
 		query="${name}+${surname}+${tv_serie}"
 	else
-		echo "tv_serie in get_query ${tv_serie}"
-		echo "third arg in get_query $3"
 		query="${name}+${surname}"
 	fi
 }
@@ -58,12 +55,11 @@ function get_response(){
 ##### BODY #####
 
 if [[ $# -eq 4 ]]; then
-	echo 4
 	get_query $name $surname $tv_serie
 else
-	echo 3
 	get_query $name $surname
 fi
 
 get_urls $api_key $cx $query $num $img_size
-get_response
+echo ${url[0]}
+#get_response
