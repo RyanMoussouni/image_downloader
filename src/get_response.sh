@@ -1,21 +1,21 @@
 #!/bin/bash
 
 ##### ARGUMENTS & VARIABLES #####
-if [[ $# -ne 4 && $# -ne 3 ]] ; then
-	echo "Invalid number of argument (should be 3 or 4), please provide: name; surname; number of images wanted (multiple of 10, max 300); and optionnally the tv_serie (with underscores instead of spaces)"
+if [[ $# -ne 4 && $# -ne 5 ]] ; then
+	echo "Invalid number of argument (should be 4 or 5), please provide: name; surname; number of images wanted (multiple of 10, max 300); size of image (large, xlarge, xxlarge); and optionnally the tv_serie (with underscores instead of spaces)"
 	exit 1
 fi
 
 name=$1
 surname=$2
 total=$3
+img_size=$4
 
-if [[ $# -eq 4 ]]; then
-	tv_serie=$4
+if [[ $# -eq 5 ]]; then
+	tv_serie=$5
 fi
 
 num=10
-img_size="xlarge"
 
 api_key="AIzaSyDOpepJVudUKvGLeQjXi3yQ4cij-pLbrvw"
 cx="96d805bff545968c0"
@@ -68,7 +68,7 @@ function get_response(){
 
 ##### BODY #####
 
-if [[ $# -eq 4 ]]; then
+if [[ $# -eq 5 ]]; then
 	get_query $name $surname $tv_serie
 else
 	get_query $name $surname
