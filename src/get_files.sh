@@ -36,5 +36,5 @@ cat links.txt | while read line; do
 	
 	idx=`ls -1 ../data/images/raw/${actor_folder} | wc -l`
 	pad_idx
-	curl --output "../data/images/raw/${actor_folder}/image_${idx}.jpg" --url ${url}
+	curl --output "../data/images/raw/${actor_folder}/image_${idx}.jpg" --url ${url} -m 20
 done
