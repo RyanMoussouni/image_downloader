@@ -23,6 +23,9 @@ function move_files(){
 	cp -r "${PATH_TO_ORIGIN}/." "${PATH_TO_DEST}/."
 }
 
+function remove_dir(){
+	rm -r "${PATH_TO_ORIGIN}"
+}
 
 n_dirs=${#ORIGIN_DIRS[@]}
 
@@ -31,4 +34,5 @@ for ((i=0; i<n_dirs; i++)); do
 	PATH_TO_ORIGIN="${PATH_TO_DIR}/${ORIGIN_DIR}"
 	rename_files
 	move_files
+	remove_dir
 done
